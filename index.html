@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .section-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: right;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        .time-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-4').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - H2 - M09</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- Actividad 1 (4 pasos) -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo')">
+        <div class="title">
+            <span>👋 Actividad 1: Saludo y Ritual Gnius Club (4 pasos)</span>
+            <span>⏰ Tiempo: 2 minutos</span>
+        </div>
+        <div class="subtitle">Preparación para la misión y objetivos del día</div>
+    </div>
+    <div id="saludo" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 2 "Bienvenida"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Hola, Genios. Hoy seguiremos mejorando nuestras aplicaciones y dejándolas listas para publicarlas. ¡Vamos a prepararnos!
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (0.5 minutos): Proyectar Diapositiva 3 "¿Cómo Están?"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Si sienten que tienen la energía para publicar su app hoy, den tres golpecitos ligeros en su escritorio. Si sienten que necesitan cargar un poco más de energía, den un solo golpe.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Proyectar Diapositiva 4 "Gracias por Asistir"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Juntemos nuestras manos en agradecimiento por la oportunidad de aprender y crear juntos. ¡Gracias por asistir, Genios!
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (0.5 minutos): Proyectar Diapositiva 5 "Objetivos de la Misión"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Hoy tenemos dos objetivos claros: <br> 1.- Configurar la visualización de tareas completadas en Glide. <br> 2.- Publicar la app en Glide para que sea accesible al público.
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 2 (3 pasos) -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('innovacion')">
+        <div class="title">
+            <span>💡 Actividad 2: Innovación del Día (3 pasos)</span>
+            <span>⏰ Tiempo: 3 minutos</span>
+        </div>
+        <div class="subtitle">Exploración de una nueva aplicación y reflexión</div>
+    </div>
+    <div id="innovacion" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 6 "Innovación del Día"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Genios, hoy les traigo una aplicación que nos ayudará a entender cómo gestionar nuestras tareas de forma eficiente. Se llama Any.do, y es una app que combina listas de tareas, recordatorios y calendarios en una interfaz muy sencilla.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1.5 minutos): Proyectar Diapositiva 7 "Demostración de Any.do"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Any.do permite a sus usuarios gestionar sus pendientes de una forma intuitiva, ya que todo se encuentra en un solo lugar: listas, recordatorios y calendarios. Además, está diseñada para ayudarte a mantener un enfoque claro y cumplir con tus objetivos sin estrés.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar Diapositiva 8 "Reflexión sobre Any.do"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Así como Any.do facilita la vida de sus usuarios, nuestra misión hoy es dejar nuestras apps de listas de tareas en Glide igual de organizadas y funcionales para quienes las usen.
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 3 (12 pasos) -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('braingym')">
+        <div class="title">
+            <span>🧠 Actividad 3: Brain Gym (12 pasos)</span>
+            <span>⏰ Tiempo: 15 minutos</span>
+        </div>
+        <div class="subtitle">Preparación y ajustes finales para la app</div>
+    </div>
+    <div id="braingym" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (1 minuto): Proyectar Diapositiva 9 "Preparar Ajustes Finales"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Antes de publicar nuestra aplicación, es esencial asegurarnos de que todo esté configurado correctamente. Los pequeños detalles en diseño, privacidad, y usabilidad pueden marcar la diferencia entre una app que solo existe y una app que realmente brilla. Hoy aprenderemos a afinar esos detalles.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar Diapositiva 10 "Nombre e Icono"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                El primer ajuste que haremos es el Nombre e Icono. Estos elementos son los primeros que los usuarios ven, tanto en la pantalla de su móvil como en el propio enlace de la app. Aquí podemos personalizar el logo, el nombre de la aplicación y su descripción, que es una forma de dar una primera impresión sobre el propósito de la app.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1.5 minutos): Proyectar Diapositiva 11 "Apariencia"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                En la sección de Apariencia, podemos ajustar el diseño visual de la aplicación. Aquí podemos cambiar el color de acento que se usa en botones, fondos y barras de navegación. También podemos elegir entre varios estilos y modos (claro u oscuro), e incluso podemos ajustar la disposición del contenido en pantallas de escritorio.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (1.5 minutos): Proyectar Diapositiva 12 "Privacidad"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Uno de los puntos clave de la publicación de una app es determinar quién puede acceder a ella. En la sección de Privacidad, podemos decidir si la app será pública, privada, o si requerirá inicio de sesión para acceder a ciertas funcionalidades. Aquí también podemos limitar el acceso a ciertos correos electrónicos o dominios.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 5 (1 minuto): Proyectar Diapositiva 13 "Pantalla de Inicio de Sesión"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Si queremos que nuestra app tenga un acceso más controlado, podemos personalizar la pantalla de inicio de sesión. Aquí podemos incluir un saludo personalizado, un logo, y también podemos añadir acuerdos que los usuarios deben aceptar antes de ingresar.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 6 (1 minuto): Proyectar Diapositiva 14 "Integraciones"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                En Integraciones, podemos ampliar las capacidades de nuestra app conectándola con herramientas externas. Por ejemplo, podríamos conectar un servicio de envío de correos o integrarnos con Twilio para enviar SMS. Estas integraciones permiten mejorar la funcionalidad y automatización de la app.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 7 (1.5 minutos): Proyectar Diapositiva 15 "Usuarios y Autenticación"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                En Usuarios y Autenticación, podemos configurar cómo nuestros usuarios se autenticarán. Glide ofrece varias opciones, como el inicio de sesión por PIN a través de correo electrónico o la integración con servicios de autenticación externos como Google o Twilio. Esto nos ayuda a asegurar que nuestros usuarios se autentiquen de manera segura.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 8 (1.5 minutos): Proyectar Diapositiva 16 "Datos"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Finalmente, en la sección de Datos, tenemos opciones avanzadas que nos permiten ajustar cómo nuestra app se sincroniza con las bases de datos que estamos usando. También podemos exportar datos para análisis o hacer respaldos. Estas configuraciones son clave para asegurar que nuestra app se mantenga actualizada y con datos precisos.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 9 (1.5 minutos): Proyectar Diapositiva 17 "Publicar App"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Una vez que hemos configurado nuestra app y realizado todas las pruebas, es momento de publicarla. Para ello, Glide nos ofrece la opción de generar un enlace que podemos compartir con los usuarios. Es importante que probemos la app en diferentes dispositivos antes de publicarla, para asegurarnos de que todo funciona correctamente.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 10 (1 minuto): Proyectar Diapositiva 18 "Prueba en Múltiples Dispositivos"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Antes de lanzar nuestra app al público, es esencial probarla en múltiples dispositivos. Esto nos asegura que la app funcionará bien tanto en móviles como en escritorio, y que la experiencia del usuario será fluida sin importar dónde accedan a la app.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 11 (1.5 minutos): Proyectar Diapositiva 19 "Reflexión Final"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Ya que tenemos control sobre el diseño, la privacidad, y las integraciones, nuestras apps serán mucho más robustas. Estos ajustes permiten que nuestros usuarios interactúen con seguridad y nos dan el control sobre cómo queremos que experimenten la app.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 12 (1.5 minutos): Proyectar Diapositiva 20 "Objetivos Alcanzados"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Hoy hemos alcanzado el primero de nuestros objetivos: configurar la visualización de tareas completadas y preparar nuestra app para ser publicada. ¡Gran trabajo, Genios!
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 4 (5 pasos) -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('circuloInspiracion')">
+        <div class="title">
+            <span>🔄 Actividad 4: Instrucciones para el Círculo de Inspiración (5 pasos)</span>
+            <span>⏰ Tiempo: 7 minutos</span>
+        </div>
+        <div class="subtitle">Reflexionar y compartir ideas con el grupo</div>
+    </div>
+    <div id="circuloInspiracion" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (1 minuto): Proyectar Diapositiva 21 "Círculo de Inspiración"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Genios, vamos a tomar un momento para compartir algo de lo que hemos aprendido hoy. Por favor, levántense y formen un pequeño círculo con sus compañeros de fila. De pie, sin mover las sillas.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar Diapositiva 22 "Formación de Círculos"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Tómense un minuto para organizarse en sus círculos de pie. Asegúrense de que todos estén listos para compartir sus ideas.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1.5 minutos): Proyectar Diapositiva 23 "Comparte tu Idea"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Ahora que están en sus círculos de pie, cada uno va a compartir una idea inspiradora o algo nuevo que haya aprendido hoy. Vamos a escuchar lo que cada uno tiene para decir.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (2 minutos): Proyectar Diapositiva 24 "Reflexiona y Comparte"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Tienen dos minutos para compartir sus ideas y reflexionar sobre lo que han aprendido. Recuerden escuchar a sus compañeros y aprender de lo que ellos también están aportando.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 5 (0.5 minutos): Proyectar Diapositiva 25 "Círculo de Inspiración Concluido"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                ¡Excelente, Genios! Espero que hayan compartido ideas interesantes con sus compañeros. Ahora, por favor, regresen a sus asientos para continuar.
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 5 (4 pasos) -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('formarParejas')">
+        <div class="title">
+            <span>🤝 Actividad 5: Formar las Parejas (4 pasos)</span>
+            <span>⏰ Tiempo: 3.5 minutos</span>
+        </div>
+        <div class="subtitle">Reunirse con sus compañeros para trabajar en la siguiente parte de la misión</div>
+    </div>
+    <div id="formarParejas" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (1 minuto): Proyectar Diapositiva 26 "Formen sus parejas"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Genios, vamos a continuar trabajando en sus Apps. Por favor, reúnanse nuevamente en las parejas con las que han estado colaborando hasta ahora.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar Diapositiva 27 "Reunión de equipos"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Tienen un minuto para organizarse y asegurarse de que están con su compañero de equipo.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar Diapositiva 28 "Recojan las Magic Tablets"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Ahora, uno de ustedes por equipo pasará a recoger las Magic Tablets para que podamos trabajar en la siguiente parte de la misión.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (0.5 minutos): Proyectar Diapositiva 29 "Recojan sus Tablets - Cronómetro"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                N/A
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 6 (5 pasos) -->
+<div id="activity-6" class="activity">
+    <div class="banner" onclick="toggleContent('ajustesFinales')">
+        <div class="title">
+            <span>⚙️ Actividad 6: Challenge - Ajustes Finales (5 pasos)</span>
+            <span>⏰ Tiempo: 18 minutos</span>
+        </div>
+        <div class="subtitle">Terminar de preparar los ajustes finales de las aplicaciones antes de publicarlas</div>
+    </div>
+    <div id="ajustesFinales" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 30 "Challenge - Ajustes Finales"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Genios, ha llegado el momento de que terminen de preparar los ajustes finales de sus aplicaciones. Hoy no las vamos a publicar, pero sí vamos a asegurarnos de que estén listas para su lanzamiento. Quiero que exploren las configuraciones que aprendimos hoy y preparen su app para el gran día.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (15 minutos): Proyectar Diapositiva 31 "Tiempo para Preparar los Ajustes"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Tienen 15 minutos para trabajar en esto. Usen sus Magic Tablets si necesitan hacer notas adicionales. Recuerden explorar y analizar cada ajuste para que su app esté lista para su lanzamiento. ¡Vamos a por ello!
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Proyectar Diapositiva 32 "Cierre del Challenge"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                ¡Muy bien, Genios! Espero que sus aplicaciones estén casi listas para ser publicadas. La siguiente misión será el gran día, así que asegúrense de que todo esté en orden. No vamos a compartir ni tomar fotos hoy, solo prepárense para lanzar su app la próxima vez.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (1 minuto): Proyectar Diapositiva 33 "Revisión de Objetivos"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Antes de terminar, revisemos los objetivos del día. Hoy configuramos los ajustes finales de nuestras apps y nos preparamos para su publicación. ¡Estamos listos para el próximo paso!
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 5 (0.5 minutos): Proyectar Diapositiva 34 "You've Got Mon-e"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                ¡Gran trabajo hoy, Genios! Todos se merecen Mon-e por su esfuerzo en preparar sus apps para el lanzamiento. Vamos a continuar con nuestro camino hacia la grandeza.
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 7 (1 paso) -->
+<div id="activity-7" class="activity">
+    <div class="banner" onclick="toggleContent('honorDojo')">
+        <div class="title">
+            <span>🙏 Actividad 7: Honor the Dojo (1 paso)</span>
+            <span>⏰ Tiempo: 1 minuto</span>
+        </div>
+        <div class="subtitle">Asegurar que el aula quede limpia y ordenada antes de salir</div>
+    </div>
+    <div id="honorDojo" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (1 minuto): Proyectar Diapositiva 35 "Honor the Dojo"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Genios, hemos llegado al final de la misión. Antes de irnos, vamos a asegurarnos de dejar nuestro espacio limpio y ordenado. Por favor, entreguen sus Magic Tablets y revisen que sus áreas estén impecables.
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</body>
+</html>
